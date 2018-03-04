@@ -20,5 +20,5 @@ You should know that most of these rc files are my own prefered settings, so mos
 License
 -------
 
-See [GNU License](LICENSE.md)
+See [GNU License](LICENSE)
 
