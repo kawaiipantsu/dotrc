@@ -26,7 +26,7 @@ I would recommend that you visit each of these sites to install things, but I'll
 
 ## Installing it all
 
-**Zsh (Oh-My-Zsh)**
+### Zsh (Oh-My-Zsh)
 
 Oh-My-Zsh has a very basic and easy installation, you simple use their download/install script in one swoosh - This will also help you setup Zsh and activate it !
 
@@ -41,7 +41,7 @@ Installation via Wget
 Please follow any on-screen installation instructions.
 And make sure that your Zsh prompt works before continuing.
 
-**iTerm2 + Color schemes**
+### iTerm2 + Color schemes
 
 MacOS already comes with a nice Terminal, but I like to go a bit further and iTerm2 is absolute a winner. It's very well optimised and has all the features that you would expect for any Terminal app. Also it has some nice features for custom profiles and tmux integration. If you want to know more, you should really go look at their [webpage](https://iterm2.com)!
 
@@ -63,7 +63,7 @@ There are plenty of things you might want to setup in iTerm2 but I'll let you pl
 
 I by the way, included my background. It's something I found in the Color schemes tarball from a iterm2 fan site (I think). It's nothing crazy, just a soft gradient fabric material, but goes nice with transparent settings! You can get it here: [background.jpg](https://raw.githubusercontent.com/kawaiipantsu/dotrc/master/MacOS/oh-my-zsh/background.jpg)
 
-**Home Brew**
+### Home Brew
 
 Home brew is a package manager for MacOS unix that gives you access to many Linux commands/software in a very familiar and easy way. Like apt-get etc for Debian.
 
@@ -91,7 +91,7 @@ Now lets try and use Brew to install some useful Linux commands!
     brew install task
     brew install tashsh
 
-**Nerd Font**
+### Nerd Font
 
 First of, if you're not familiar with Nerd Font, you really need to check it out. It's very comprehensive and optimised for developers and likeminded. You can find it [here](https://github.com/ryanoasis/nerd-fonts).
 
@@ -113,7 +113,7 @@ Manually ( Not recommended)
  - (Install easy way) Click the font file to preview it and choose "Install"
  - (Install via terminal) cp "Hack Regular Nerd Font Complete.ttf" ~/Library/Fonts
 
-**Oh-My-Zsh Theme and Plugins**
+### Oh-My-Zsh Theme and Plugins
 
 This is a very nice and custom theme for Oh-My-Zsh and Zsh in general.
 I highly recommend it - To see more take a look at their [webpage](https://github.com/bhilburn/powerlevel9k).
@@ -135,7 +135,7 @@ Then add the following to your .zshrc or use mine where it all is there!
 
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-**Activating it all**
+## Activating it all
 
 To take use of all the things we have install thus far, we need to make some changes.
 You might already have made these changes on the fly when you installed each thing if you could not wait :) But anyway, here is the final steps!!
