@@ -153,7 +153,7 @@ You might already have made these changes on the fly when you installed each thi
 
  - Copy-Paste the content of [.zshrc](https://github.com/kawaiipantsu/dotrc/blob/master/MacOS/oh-my-zsh/.zshrc) into your own file. ( $EDITOR ~/.zshrc )
  
- - Change the font in iTerm2 ( **⌘,** ) under "**Profiles**" -> **Default** -> **Text** set it to *13pt Hack Regular Nerd Font Complete*.
+ - Change the font in iTerm2 ( **⌘,** ) under "**Profiles**" -> **Default** -> **Text** set it to *13pt Hack Regular Nerd Font Complete* or *13pt Knack Regular Nerd Font Complete* (if you installed it via brew).
  
  - Set background and transparency in iTerm2 ( **⌘,** ) under "**Profiles**" -> **Default** -> **Window** set Background Image to background.jpg, check "**Keep background Colors opaque**" and enable "**Blur**" then adjust Blur, Transparency and Blending to what you like best. **All my sliders are about 1/3 in**.
 
