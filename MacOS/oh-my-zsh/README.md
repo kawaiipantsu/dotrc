@@ -100,6 +100,7 @@ Now lets try and use Brew to install some useful Linux commands!
     brew install tree
     brew install task
     brew install tashsh
+    brew install fortune
 
 ### Nerd Font
 
@@ -140,6 +141,10 @@ Next let's install some of the custom plugins I have enabled in my config .zshrc
 To install this plugin use brew
 
     brew install zsh-syntax-highlighting
+    
+Also you need to install "fortune" as chucknorris depends on strfile that's included in fortune.
+
+    brew install fortune
 
 Then add the following to your .zshrc or use mine where it all is there!
 
