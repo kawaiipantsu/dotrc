@@ -10,6 +10,17 @@ Here is a quick screenshot of my terminal so you can see what it looks like.
 
 ![Zsh Screenshot](/MacOS/oh-my-zsh/screenshot.png?raw=true "Zsh Screenshot")
 
+# Table of Contents
+
+ * [My Zsh + Terminal + Font and Theme/Color setup](#my-zsh--terminal--font-and-themecolor-setup)
+ * [Installing it all](#installing-it-all)
+   * [Zsh (Oh-My-Zsh)](#zsh-oh-my-zsh)
+   * [iTerm2 + Color schemes](#iterm2--color-schemes)
+   * [Home Brew](#home-brew)
+   * [Nerd Font](#nerd-font)
+   * [Oh-My-Zsh Theme and Plugins](#oh-my-zsh-theme-and-plugins)
+ * [Activating it all](#activating-it-all)
+
 ## My Zsh + Terminal + Font and Theme/Color setup
 
  - Zsh is installed and changed to via the Oh-My-Zsh installation
