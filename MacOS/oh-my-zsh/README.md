@@ -94,7 +94,6 @@ Now lets try and use Brew to install some useful Linux commands!
     brew install w3m
     brew install vim
     brew install macvim
-    brew install nano
     brew install tmux
     brew install htop
     brew install irssi
