@@ -1,14 +1,18 @@
 dotrc - Runtime configurations
 ==============================
 
-Linux Runtime configuration settings for various applications/shell interpreters. If you need help to install or use some of the dot rc files, just write a note/comment and i will get back to you.
+These are my Runtime configuration settings for various applications/shell interpreters.
+If you need help to install or use some of the dot rc files, just write a note/comment and i will get back to you.
+
+I will try to descripe how i installed the different things, however i will also expect that you yourself know how to work on a Linux/Unix system.
+I have split it up into two main folders, but you will in somecases find much the same files as well it's all build on good'ol Unix and the structure is the same in many cases. However there might be small tweaks so please try to find your dotrc file in the right main folder to begin with then perhaps check the other.
 
 Overview
 --------
 
-	bashrc - This is my Bash rc with custom prompt and functions.
+	Linux  - All my dotrc files for Linux. These are used on servers, workstations and embedded systems
 
-	vimrc  - This is my vimrc setup, with plugins, layout, theme.
+	MacOS  - Since i use MacOS on my workstation i only think it's fair to share those as well.
 
 
 Contributing
