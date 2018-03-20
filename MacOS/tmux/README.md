@@ -14,7 +14,7 @@ So how is this useful for me ? Well I'll try to list a few reasons but of course
 
 - Also it's worth noticing that tmux can give you really nice extra information and tend to renaming tabs/window titles and so on. Also as tmux has it's own "prompt" or "information bar" you really get much more details while working.
 
-![tmux Screenshot](MacOS/tmux/screenshot1.png?raw=true "tmux Screenshot")
+![tmux Screenshot](/MacOS/tmux/screenshot1.png?raw=true "tmux Screenshot")
 
-![tmux Screenshot](MacOS/tmux/screenshot2.png?raw=true "tmux Screenshot")
+![tmux Screenshot](/MacOS/tmux/screenshot2.png?raw=true "tmux Screenshot")
 
