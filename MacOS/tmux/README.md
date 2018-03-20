@@ -19,12 +19,14 @@ So how is this useful for me ? Well I'll try to list a few reasons but of course
 So quick info both of the screenshots are from my MacOS workstation via iterm2, but the first screenshot is with my "workstation" tmux config and the second screenshot is from my "remote server" tmux config. 
 
 > **Workstation tmux config**
+>
 > Showing Wifi status (if used), IP lan/wan details, windows, iTunes info, Battery info (if used), Online status, Active hostname of your computer, remote, ssh.
 
 ![tmux Screenshot](/MacOS/tmux/screenshot1.png?raw=true "tmux Screenshot")
 
 
 > **Server/Remote tmux config**
+>
 > Showing my windows, Uptime stats, Load averages, Date info and Server name.
 
 ![tmux Screenshot](/MacOS/tmux/screenshot2.png?raw=true "tmux Screenshot")
