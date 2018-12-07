@@ -1,6 +1,5 @@
 [![Twitter Follow](https://img.shields.io/twitter/follow/davidbl.svg?style=social&label=Follow)](https://twitter.com/davidbl) [![GitHub issues](https://img.shields.io/github/issues/kawaiipantsu/dotrc.svg)](https://github.com/kawaiipantsu/dotrc/issues) [![GitHub closed issues](https://img.shields.io/github/issues-closed/kawaiipantsu/dotrc.svg)](https://github.com/kawaiipantsu/dotrc/issues) [![GitHub license](https://img.shields.io/github/license/kawaiipantsu/dotrc.svg)](https://github.com/kawaiipantsu/dotrc/blob/master/LICENSE) [![GitHub forks](https://img.shields.io/github/forks/kawaiipantsu/dotrc.svg)](https://github.com/kawaiipantsu/dotrc/network) [![GitHub stars](https://img.shields.io/github/stars/kawaiipantsu/dotrc.svg)](https://github.com/kawaiipantsu/dotrc/stargazers)
-dotrc - Runtime configurations
-==============================
+# ᵔᴥᵔ dotrc - Runtime configurations
 
 These are my Runtime configuration settings for various applications/shell interpreters.
 If you need help to install or use some of the dot rc files, just write a note/comment and i will get back to you.
