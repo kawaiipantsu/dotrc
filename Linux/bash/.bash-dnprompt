@@ -1,0 +1,223 @@
+#!/usr/bin/env bash
+## ---------------------------------------------- ##
+##    ____  _   _ ____            _
+##   |  _ \| \ | | __ )  __ _ ___| |__   Kawaii
+##   | | | |  \| |  _ \ / _` / __| '_ \   Pantsu !
+##   | |_| | |\  | |_) | (_| \__ \ | | |
+##   |____/|_| \_|____/ \__,_|___/_| |_|  #DarkNET
+##
+## ---------------------------------------------- ##
+
+####################################################
+## Shell Global Settings                          ##
+## ---------------------------------------------- ##
+PATH=$PATH:~/bin:
+export GREP_COLOR='1;33'
+export COMP_WORDBREAKS=${COMP_WORDBREAKS/\:/}
+
+## Bash Global Settings                           ##
+## ---------------------------------------------- ##
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend;
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell;
+# Add tab completion for many Bash commands
+source /etc/bash_completion
+
+## Bash 4 Settings                                ##
+## ---------------------------------------------- ##
+# Bash 4 features:
+# * `autocd`, e.g. `**/hello` will enter `./foo/bar/wee/hello`
+# * Recursive globbing, e.g. `echo **/*.txt`
+for option in autocd globstar; do
+	shopt -s "$option" 2> /dev/null;
+done;
+
+## Aliases                                        ##
+## ---------------------------------------------- ##
+alias ls="ls --color=auto"
+alias sl=ls
+alias la='ls -AF'
+alias ll='ls -Al'
+alias l='ls -A'
+alias l1='ls -1'
+alias clhead='curl -D - -so /dev/null'
+alias aptshow='apt-cache show'
+alias aptinst='sudo apt-get install -V'
+alias grep='grep --color=auto'
+alias c='clear'
+alias k='clear'
+alias cls='clear'
+alias edit="$EDITOR"
+alias pager="$PAGER"
+alias ..='cd ..'
+alias cd..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias -- -='cd -'
+alias txl='tmux ls'
+alias txn='tmux new -s'
+alias txa='tmux a -t'
+VIM=$(command -v vim)
+GVIM=$(command -v gvim)
+MVIM=$(command -v mvim)
+[[ -n $VIM ]] && alias v=$VIM
+
+
+## Bash Completion                                ##
+## ---------------------------------------------- ##
+complete -W "\`grep -oE '^[a-zA-Z0-9_-]+:([^=]|$)' Makefile | sed 's/[^a-zA-Z0-9_-]*$//'\`" make
+complete -o default -o nospace -F _sshcomplete ssh scp
+complete -o "nospace" -W "tail php perl grep mc nano vim" killall;
+
+
+## Bash Functions                                 ##
+## ---------------------------------------------- ##
+_sshcomplete() {
+    local CURRENT_PROMPT="${COMP_WORDS[COMP_CWORD]}"
+    if [[ ${CURRENT_PROMPT} == *@*  ]] ; then
+      local OPTIONS="-P ${CURRENT_PROMPT/@*/}@ -- ${CURRENT_PROMPT/*@/}"
+    else
+      local OPTIONS=" -- ${CURRENT_PROMPT}"
+    fi
+    if [ -r "$HOME/.ssh/known_hosts" ]; then
+        if grep -v -q -e '^ ssh-rsa' "$HOME/.ssh/known_hosts" ; then
+            COMPREPLY=( ${COMPREPLY[@]} $(compgen -W "$( awk '{print $1}' "$HOME/.ssh/known_hosts" | grep -v ^\| | cut -d, -f 1 | sed -e 's/\[//g' | sed -e 's/\]//g' | cut -d: -f1 | grep -v ssh-rsa)" ${OPTIONS}) )
+        fi
+    fi
+    if [ -r /etc/hosts ]; then
+        COMPREPLY=( ${COMPREPLY[@]} $(compgen -W "$( grep -v '^[[:space:]]*$' /etc/hosts | grep -v '^#' | awk '{for (i=2; i<=NF; i++) print $i}' )" ${OPTIONS}) )
+    fi
+
+    return 0
+}
+catt() {
+  for i in "$@"; do
+    if [ -d "$i" ]; then
+      ls "$i"
+    else
+      cat "$i"
+    fi
+  done
+}
+
+
+
+## Bash Prompt Stuff                              ##
+## ---------------------------------------------- ##
+# Do we show GIT stuff when there?? ( yes or no )
+SHOW_GIT=yes
+
+## Lets work magic!
+__dnprompt() {
+
+    readonly C_R='\[\033[0m\]'
+    readonly C_W1='\[\033[0;38;5;249m\]'
+    readonly C_W2='\[\033[1;38;5;015m\]'
+    readonly C_G1='\[\033[1;38;5;235m\]'
+    readonly C_G2='\[\033[1;38;5;240m\]'
+    readonly C_G3='\[\033[1;38;5;245m\]'
+    readonly C_G4='\[\033[1;48;5;235m\]'
+    readonly C_G5='\[\033[1;48;5;240m\]'
+    readonly C_G6='\[\033[1;48;5;245m\]'
+
+    readonly C_RED1='\[\033[1;38;5;001m\]'
+    readonly C_RED2='\[\033[1;38;5;009m\]'
+    readonly C_RED3='\[\033[1;48;5;001m\]'
+    readonly C_GREEN1='\[\033[1;38;5;003m\]'
+    readonly C_GREEN2='\[\033[1;38;5;011m\]'
+    readonly C_GREEN3='\[\033[1;48;5;003m\]'
+    readonly C_BLUE1='\[\033[1;38;5;004m\]'
+    readonly C_BLUE2='\[\033[1;38;5;012m\]'
+    readonly C_BLUE3='\[\033[1;48;5;004m\]'
+
+    readonly SYMBOL_GIT_BRANCH="❦"
+    readonly SYMBOL_GIT_MODIFIED="●"
+    readonly SYMBOL_GIT_PUSH="↑"
+    readonly SYMBOL_GIT_PULL="↓"
+
+    __git_info() {
+	if [ "$SHOW_GIT" = no ]; then
+		return
+	fi
+        hash git 2>/dev/null || return
+        local git_eng="env LANG=C git"
+        local ref=$($git_eng symbolic-ref --short HEAD 2>/dev/null)
+        if [[ -n "$ref" ]]; then
+            ref="$SYMBOL_GIT_BRANCH $ref"
+        else
+            ref=$($git_eng describe --tags --always 2>/dev/null)
+        fi
+        [[ -n "$ref" ]] || return
+        local marks
+        while IFS= read -r line; do
+            if [[ $line =~ ^## ]]; then
+                [[ $line =~ ahead\ ([0-9]+) ]] && marks+=" $SYMBOL_GIT_PUSH ${BASH_REMATCH[1]}"
+                [[ $line =~ behind\ ([0-9]+) ]] && marks+=" $SYMBOL_GIT_PULL ${BASH_REMATCH[1]}"
+            else
+                marks=" $SYMBOL_GIT_MODIFIED $marks"
+                break
+            fi
+        done < <($git_eng status --porcelain --branch 2>/dev/null)
+        printf " \001\033[1;38;5;236m\002[ \001\033[1;38;5;244m\002${ref}\001\033[1;38;5;251m\002${marks} \001\033[1;38;5;236m\002]\001\033[0m\002"
+    }
+
+    ps1() {
+        local EXITC=$?
+
+	# If you don't like fancy icons like this, just remove em...
+	ICON_OK="✔"
+	ICON_ERR="✘"
+
+        if [ $EXITC -eq 0 ]; then
+            local symbol="$COLOR_SUCCESS $PS_SYMBOL $RESET"
+	    local face="${C_W1}(${C_GREEN1}¬${C_G3}_${C_GREEN1}¬${C_W1})${C_G1}.${C_G2}oO${C_G3}( ${C_W1}${EXITC}${C_GREEN1}${ICON_OK} ${C_G3})${C_R}"
+        elif (($EXITC >= 1 && $EXITC <= 125)); then
+            local symbol="$COLOR_FAILURE $PS_SYMBOL $RESET"
+	    local face="${C_W1}(${C_GREEN2}¬${C_G3}_${C_GREEN2}¬${C_W1})${C_G1}.${C_G2}oO${C_G3}( ${C_W1}${EXITC}${C_RED2}${ICON_ERR} ${C_G3})${C_R}"
+        elif (($EXITC >= 126 && $EXITC <= 130)); then
+            local symbol="$COLOR_FAILURE $PS_SYMBOL $RESET"
+	    local face="${C_W1}(${C_RED1}o${C_G3}_${C_RED1}o${C_W1})${C_G1}.${C_G2}oO${C_G3}( ${C_W1}${EXITC}${C_RED2}${ICON_ERR} ${C_G3})${C_R}"
+        elif (($EXITC >= 131 && $EXITC <= 255)); then
+            local symbol="$COLOR_FAILURE $PS_SYMBOL $RESET"
+	    local face="${C_W1}(${C_RED2}o${C_G3}_${C_RED2}O${C_W1})${C_G1}.${C_G2}oO${C_G3}( ${C_W1}${EXITC}${C_RED2}${ICON_ERR} ${C_G3})${C_R}"
+	else
+            local symbol="$COLOR_FAILURE $PS_SYMBOL $RESET"
+	    local face="${C_G3}${EXITC}${C_W1}(${C_W2}¬${C_G3}_${C_W2}¬${C_W1})${C_G1}.${C_G2}oO${C_G3}( ${C_W1}${EXITC}${C_RED2}${ICON_ERR} ${C_G3})${C_R}"
+        fi
+
+        #local cwd="$COLOR_CWD\w$RESET"
+
+	local SB="${C_G1}:${C_G2}:${C_G3}:${C_R}"
+	local SE="${C_G3}:${C_G2}:${C_G1}:${C_R}"
+	local MB="${C_G4}:${C_G5}:${C_G6}:${C_R}"
+	local ME="${C_G6}:${C_G5}:${C_G4}:${C_R}"
+
+	local P_CLOCK="\\t"
+	local P_HIST="\\!"
+	local P_USER="\\u"
+	local P_HOST="\`echo \\h|awk '{print toupper(\$1)}'\`"
+	local P_PWD="\\w"
+
+	local P_FS="${C_G1}dir${C_G2}(${C_W1}\$(/bin/ls -A1 | /usr/bin/wc -l | /bin/sed 's: ::g') files, \$(/bin/ls -lAh | /bin/grep -m 1 total | /bin/sed 's/total //')b${C_G2})"
+
+        if shopt -q promptvars; then
+            __dnprompt_git_info="$(__git_info)"
+            local git="\${__dnprompt_git_info}${C_R} "
+        else
+            local git="${C_W1}$(__git_info)${C_R} "
+        fi
+
+        local cwd="${SB} ${C_W2}${P_HOST} ${SE}${SB} ${C_W1}${P_CLOCK} ${SE}${SB} ${C_W1}${P_USER} ${SE}${SB} ${C_G2}[${C_G3}!${C_W1}${P_HIST}${C_G2}] ${P_FS} ${face}\n${SB} ${C_G2}path${C_G1}(${C_W1}${P_PWD}${C_G1})${git}${C_W1}\\$ ${C_G1}>${C_G2}>${C_G3}> ${C_R}"
+
+	# Now lets wrap it all up!
+        PS1="$cwd"
+    }
+
+    PROMPT_COMMAND="ps1${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+}
+# Set the prompt
+__dnprompt
+unset __dnpromt
