@@ -11,6 +11,7 @@
 ####################################################
 ## Shell Global Settings                          ##
 ## ---------------------------------------------- ##
+
 PATH=$PATH:~/bin:
 export GREP_COLOR='1;33'
 export COMP_WORDBREAKS=${COMP_WORDBREAKS/\:/}
