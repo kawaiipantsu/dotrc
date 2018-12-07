@@ -3,12 +3,10 @@
 > This is my very basic and simple Bash prompt and runtime config ʘ‿ʘ
 
 ![Bash Screenshot](/Linux/bash/screenshot.png?raw=true "Bash Screenshot")
-My clean and sleek bash prompt!
 
 ![Bash GIT Screenshot](/Linux/bash/git_stuff.png?raw=true "Bash GIT Screenshot")
-Here you can see the "typically" git info you would expect ...
 
-This is my primary bash prompt that i use on almost all of my Linux devices. It's mostly implemented on servers or other embedded devices. On my clients i usually run something like zsh. But as a rule of thumb, if it's rocking bash this is my prompt.
+This is my primary bash prompt that i use on almost all of my Linux devices. It's mostly implemented on servers or other embedded devices. On my clients i usually run something like zsh. But as a rule of thumb, if it's rocking bash this is my prompt. In the two screenshots above this you can see it in it's "normal" look and the second screenshot is showing the typically git information you would expect :)
 
 # Table of Contents
 
