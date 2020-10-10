@@ -250,16 +250,12 @@ To return to the old ways, just delete the `.hushlogin` file.
 To take use of all the things we have install thus far, we need to make some changes.
 You might already have made these changes on the fly when you installed each thing if you could not wait :) But anyway, here is the final steps!!
 
- - Copy-Paste the content of [.zshrc](https://github.com/kawaiipantsu/dotrc/blob/master/MacOS/oh-my-zsh/.zshrc) into your own file. ( $EDITOR ~/.zshrc )
+ - Copy-Paste the content of [.zshrc](https://github.com/kawaiipantsu/dotrc/blob/master/MacOS/oh-my-zsh/.zshrc) into your own file. ( `$EDITOR ~/.zshrc` )
  
- - Edit the .zshrc file and change **DEFAULT_USER="dbl"** to your own local username. This will make the tilde ~ (homedir) look better.
+ - Change the font in iTerm2 ( **⌘,** ) under "**Profiles**" -> **Default** -> **Text** set it to `15pt MesloLGS NF`
  
- - Change the font in iTerm2 ( **⌘,** ) under "**Profiles**" -> **Default** -> **Text** set it to *15pt MesloLGS NF*
- 
- - Set background and transparency in iTerm2 ( **⌘,** ) under "**Profiles**" -> **Default** -> **Window** set Background Image to background.jpg, check "**Keep background Colors opaque**" and enable "**Blur**" then adjust Blur, Transparency and Blending to what you like best. **All my sliders are about 1/3 in**.
-
-
+ - Set background, transparency and blend in iTerm2 ( **⌘,** ) under "**Profiles**" -> **Default** -> **Window** set Background Image to `background_v2_1440p.jpg`, check "**Keep background Colors opaque**" and enable "**Blur**" then adjust Blur, Transparency and Blending to what you like best. 
 
 **All Done!!**
-Restart your iTerm2 terminal, now enjoy and have fun!
 
+Restart your iTerm2 terminal, now enjoy and have fun!
