@@ -8,18 +8,25 @@ This is not a installation guide per-se but more a list of all the items that bu
 
 Here is a quick screenshot of my terminal so you can see what it looks like.
 
-![Zsh Screenshot](/MacOS/oh-my-zsh/screenshot.png?raw=true "Zsh Screenshot")
+![Zsh Screenshot](/MacOS/oh-my-zsh/screenshot_v2.png?raw=true "Zsh Screenshot")
 
 # Table of Contents
 
- * [My Zsh + Terminal + Font and Theme/Color setup](#my-zsh--terminal--font-and-themecolor-setup)
- * [Installing it all](#installing-it-all)
-   * [Zsh (Oh-My-Zsh)](#zsh-oh-my-zsh)
-   * [iTerm2 + Color schemes](#iterm2--color-schemes)
-   * [Home Brew](#home-brew)
-   * [Nerd Font](#nerd-font)
-   * [Oh-My-Zsh Theme and Plugins](#oh-my-zsh-theme-and-plugins)
- * [Activating it all](#activating-it-all)
+- [ᵔᴥᵔ Zsh - Runtime configuration](#----zsh---runtime-configuration)
+- [Table of Contents](#table-of-contents)
+  * [My Zsh + Terminal + Font and Theme/Color setup](#my-zsh---terminal---font-and-theme-color-setup)
+  * [Installing it all](#installing-it-all)
+    + [Zsh (Oh-My-Zsh)](#zsh--oh-my-zsh-)
+    + [iTerm2 + Color schemes](#iterm2---color-schemes)
+    + [Home Brew](#home-brew)
+    + [Nerd Font](#nerd-font)
+    + [Oh-My-Zsh Theme (PowerLevel10k) and Plugins](#oh-my-zsh-theme--powerlevel10k--and-plugins)
+  * [Powerlevel9k -> Powerlevel10k Migrate already running setup with Oh My Zsh](#powerlevel9k----powerlevel10k-migrate-already-running-setup-with-oh-my-zsh)
+  * [iTerm2 - ZSH Shell integration](#iterm2---zsh-shell-integration)
+  * [Hush Last login message](#hush-last-login-message)
+  * [Activating it all](#activating-it-all)
+
+---
 
 ## My Zsh + Terminal + Font and Theme/Color setup
 
@@ -29,7 +36,7 @@ Here is a quick screenshot of my terminal so you can see what it looks like.
  
  - Font "**Nerd Font**" it's a combination of all the fancy terminal fonts out there and optimized for Developers and DevOps. 40+ patched fonts, over 3,600 glyph/icons!
  
- - Theme & Color setup is a bit messy but the end-result is nice! For Oh-My-Zsh I use the theme "**powerlevel9k**" and for iTerm2 I use the color scheme "**Blazer**"
+ - Theme & Color setup is a bit messy but the end-result is nice! For Oh-My-Zsh I use the theme "**powerlevel10k**" and for iTerm2 I use the color scheme "**Blazer**"
  
  - Also I like to notice that I have installed "**Brew**" - The best package manager for MacOS that gives you access to almost all Linux commands!
 
@@ -43,11 +50,15 @@ Oh-My-Zsh has a very basic and easy installation, you simple use their download/
 
 Installation via cURL (Most MacOS have this)
 
-    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
 
 Installation via Wget
 
-    sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+```zsh
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+```
 
 Please follow any on-screen installation instructions.
 And make sure that your Zsh prompt works before continuing.
@@ -72,7 +83,9 @@ Once you have installed iTerm2 you can install the color scheme by doing the fol
 That's it! Now you can choose that color scheme and we can move on.
 There are plenty of things you might want to setup in iTerm2 but I'll let you play around with that. If you want help you can always contact me.
 
-I by the way, included my background. It's something I found in the Color schemes tarball from a iterm2 fan site (I think). It's nothing crazy, just a soft gradient fabric material, but goes nice with transparent settings! You can get it here: [background.jpg](https://raw.githubusercontent.com/kawaiipantsu/dotrc/master/MacOS/oh-my-zsh/background.jpg)
+I included my new background, normally i used the one included with iterm2. But later i have moved away and wanted a bt more stylish one but mellow, sleek and smooth just like the default. It's nothing much, but updated to 1440p for full screen terminal windows etc and then it would still look nice! I might make more later.
+
+**You can get it here:** [background_v2_1440p.jpg](https://raw.githubusercontent.com/kawaiipantsu/dotrc/master/MacOS/oh-my-zsh/background_v2_1440p.jpg)
 
 ### Home Brew
 
@@ -83,24 +96,32 @@ To install Home Brew do the following (taken from their [website](https://brew.s
 
 Start iTerm2 and do the following
 
-    xcode-select --install
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```zsh
+xcode-select --install
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
 Follow the on-screen instructions if any.
-Now lets try and use Brew to install some useful Linux commands!
 
-    brew install wget
-    brew install curl
-    brew install w3m
-    brew install vim
-    brew install macvim
-    brew install tmux
-    brew install htop
-    brew install irssi
-    brew install tree
-    brew install task
-    brew install tashsh
-    brew install fortune
+Here is a list of things i usually install that i use on a daily basis when working in the console.
+
+```zsh
+brew install mc
+brew install wget
+brew install curl
+brew install w3m
+brew install vim
+brew install macvim
+brew install tmux
+brew install htop
+brew install irssi  
+brew install tree
+brew install task
+brew install tashsh
+brew install fortune
+brew install jesseduffield/lazygit/lazygit
+brew install jsonpp
+```
 
 ### Nerd Font
 
@@ -110,45 +131,119 @@ To sum it up fast, it's a combination of over 40 patched fonts for developers li
 
 All in all, this font is pretty much a must if you ask me. No reason to not install it rather than installing separate fonts and missing out on cool glyphs!
 
-To install Nerd Fonts there are two ways, I recommend using HomeBrew as to why we installed it in the previous step! You can also pick out your font manually to install it yourself. I have included both steps.
+We are going to take advantage of a Nerd Font (Meslo) that is patched directly for use with our theme that we are using later on.
 
-Via Home Brew ( Recommended! )
+**To install - Meslo Nerd Font patched for Powerlevel10k**
 
-    brew tap caskroom/fonts
-    brew cask install font-hack-nerd-font
+To install it via the theme use their wizard. Simply answer `Yes` when asked whether to install `Meslo Nerd Font`
+     
+```zsh
+p10k configure
+```
 
-Manually ( Not recommended)
+To install it manually grab the font files here
 
- - Find the font you want under "[Patched-Fonts](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts)"
- - Here is the one I use in my screenshot: [Hack/Knack Regular Complete](https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf)
- - (Install easy way) Click the font file to preview it and choose "Install"
- - (Install via terminal) cp "Hack Regular Nerd Font Complete.ttf" ~/Library/Fonts
+- [MesloLGS NF Regular.ttf](
+    https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf)
+- [MesloLGS NF Bold.ttf](
+    https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf)
+- [MesloLGS NF Italic.ttf](
+    https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf)
+- [MesloLGS NF Bold Italic.ttf](
+    https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf)
 
-### Oh-My-Zsh Theme and Plugins
+Double-click on each file and click "Install". This will make `MesloLGS NF` font available to all
+applications on your system. Configure your terminal to use this font.
+
+
+### Oh-My-Zsh Theme (PowerLevel10k) and Plugins
 
 This is a very nice and custom theme for Oh-My-Zsh and Zsh in general.
 I highly recommend it - To see more take a look at their [webpage](https://github.com/bhilburn/powerlevel9k).
 
 To install it for Oh-My-Zsh it's fairly easy, just do the following
 
-    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+```zsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
 
-To customise the Themed prompt, please go to their website.
-Next let's install some of the custom plugins I have enabled in my config .zshrc the rest of the plugins are all included in Oh-My-Zsh.
+To customise the theme and prompt, you can run their wizard script.
 
-- zsh-autosuggestions - I like this plugin, it auto suggests previously used commands, hosts and files when you type the command.
+```zsh
+p10k configure
+```
 
-To install this plugin use brew
+Next let's install some of the custom plugins I have enabled in my config .zshrc the rest of the plugins are all included in Oh-My-Zsh. If you don't want to install these, disable them in the `.zshrc` file !
 
-    brew install zsh-syntax-highlighting
-    
+- **zsh-autosuggestions** -  Neat and functional
+- **zsh-syntax-highlighting** - I like this plugin, makes it more colorfull :)
+- **zsh-history-substring-search** - Nice history search, hate it or love it!
+
+To install **zsh-autosuggestions** plugin
+```zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
+
+To install **zsh-syntax-highlighting** plugin
+```zsh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
+
+To install **zsh-history-substring-search** plugin
+```zsh
+git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+```
+
 Also you need to install "fortune" as chucknorris depends on strfile that's included in fortune.
 
-    brew install fortune
+```zsh
+brew install fortune
+```
 
-Then add the following to your .zshrc or use mine where it all is there!
 
-    source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+## Powerlevel9k -> Powerlevel10k Migrate already running setup with Oh My Zsh
+
+Do the following
+
+```zsh
+# Add powerlevel10k to the list of Oh My Zsh themes.
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+# Replace ZSH_THEME="powerlevel9k/powerlevel9k" with ZSH_THEME="powerlevel10k/powerlevel10k".
+sed -i.bak 's/powerlevel9k/powerlevel10k/g' ~/.zshrc
+# Restart Zsh.
+exec zsh
+# Run the PowerLevel10k Wizard
+p10k configure
+```
+
+## iTerm2 - ZSH Shell integration
+
+Install iTerm2 shell integration!
+
+```zsh
+curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
+```
+
+Don't forget to turn of the iterm-marker or else it's just going to look ugly :) To run it off do the following.
+
+- Go into `Preferences > Profiles > (your profile) > Terminal`
+- Scroll down to `Shell Integration` and turn off `Show mark indicators`
+
+## Hush Last login message
+
+Are you a little tired that everytime you start a terminal on MacOS it tells you the following...
+
+```
+Last login: Sat Oct 10 14:19:00 on ttys001
+```
+
+Well it don't have to! If you like me want clean lines and more room in your terminal window you can disable it by doing the following.
+
+```zsh
+touch $HOME/.hushlogin
+```
+
+To return to the old ways, just delete the `.hushlogin` file.
 
 ## Activating it all
 
@@ -159,9 +254,11 @@ You might already have made these changes on the fly when you installed each thi
  
  - Edit the .zshrc file and change **DEFAULT_USER="dbl"** to your own local username. This will make the tilde ~ (homedir) look better.
  
- - Change the font in iTerm2 ( **⌘,** ) under "**Profiles**" -> **Default** -> **Text** set it to *13pt Hack Regular Nerd Font Complete* or *13pt Knack Regular Nerd Font Complete* (if you installed it via brew).
+ - Change the font in iTerm2 ( **⌘,** ) under "**Profiles**" -> **Default** -> **Text** set it to *15pt MesloLGS NF*
  
  - Set background and transparency in iTerm2 ( **⌘,** ) under "**Profiles**" -> **Default** -> **Window** set Background Image to background.jpg, check "**Keep background Colors opaque**" and enable "**Blur**" then adjust Blur, Transparency and Blending to what you like best. **All my sliders are about 1/3 in**.
+
+
 
 **All Done!!**
 Restart your iTerm2 terminal, now enjoy and have fun!
